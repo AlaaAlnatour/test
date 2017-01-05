@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script
+    >
+
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+        alert('Service Worker and Push is supported');
+        console.log('Service Worker and Push is supported');
+
+        navigator.serviceWorker.register('sw.js')
+                .then(function(swReg) {
+                    alert('Service Worker is registered');
+                    console.log('Service Worker is registered', swReg);
+
+                    swRegistration = swReg;
+                })
+                .catch(function(error) {
+                    alert('Service Worker Error');
+                    console.error('Service Worker Error', error);
+                });
+    } else {
+        alert('Push messaging is not supported');
+        console.warn('Push messaging is not supported');
+        pushButton.textContent = 'Push Not Supported';
+    }
+
+
+
+
+</script>
+</body>
+</html>
